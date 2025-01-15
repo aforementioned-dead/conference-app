@@ -33,3 +33,11 @@ class Schedule(Base):
 
     room = relationship("Room", back_populates="schedules")
     presentation = relationship("Presentation", back_populates="schedules")
+
+
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True, index=True)
+    username = Column(String, unique=True, index=True)
+    role = Column(String)

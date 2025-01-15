@@ -44,3 +44,19 @@ class Schedule(ScheduleBase):
 
     class Config:
         from_attributes = True
+
+
+class UserBase(BaseModel):
+    username: str
+
+
+class UserCreate(UserBase):
+    role: str
+
+
+class User(UserBase):
+    id: int
+    role: str
+
+    class Config:
+        from_attributes = True

@@ -30,7 +30,7 @@ def create_room(room: schemas.RoomCreate, db: Session = Depends(get_db)):
 
 @app.get("/presentations", response_model=list[schemas.Presentation])
 def read_presentations(db: Session = Depends(get_db)):
-    return crud.get_presentations(db)
+    return crud.get_presentation(db)
 
 @app.post("/presentations", response_model=schemas.Presentation)
 def create_presentation(presentation: schemas.PresentationCreate, db: Session = Depends(get_db)):
@@ -44,3 +44,10 @@ def read_schedules(db: Session = Depends(get_db)):
 def create_schedule(schedule: schemas.ScheduleCreate, db: Session = Depends(get_db)):
     return crud.create_schedule(db, schedule)
 
+@app.get("/schedule-by-room")
+def read_schedule_by_room(db: Session = Depends(get_db)):
+    return crud.get_schedule_by_room(db)
+
+@app.post("/users", response_model=schemas.User)
+def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
+    return crud.create_user(db, user)
