@@ -62,13 +62,17 @@
 1. Соберите и запустите контейнер Docker:
    ```
    docker-compose up --build
+
+2. Перейдите в conference_app:
+   ```
+   docker exec -it conference_app bash
    
-2. Доступ к приложению http://localhost:8000/docs
+3. Доступ к приложению http://localhost:8000/docs
 
 ### Тестирование
 1. Запустите все тесты:
    ```
-   pytest
+   poetry run pytest
 
 2. Убедитесь, что все тесты проходят успешно
 
@@ -76,14 +80,27 @@
 Аудитории (Rooms):
    - POST /rooms: Создать аудиторию
    - GET /rooms: Получить список всех аудиторий
+   - PUT /rooms/{room_id}: Обновить созданную комнату
+   - DELETE /rooms/{room_id}: Удалить комнату
 
 Доклады (Presentations):
    - POST /presentations: Создать доклад
    - GET /presentations: Получить список всех докладов
+   - PUT /presentations/{presentation_id}: Обновить доклад
+   - DELETE /presentations/{presentation_id}: Удалить доклад по его ID
 
 Расписание (Schedules)
    - POST /schedules: Запланировать доклад
    - GET /schedule-by-room: Просмотреть расписание, сгруппированное по аудиториям
+   - GET /schedules: Получить список всех расписаний
+   - PUT /schedules/{schedule_id}: Обновить расписание
+   - DELETE /schedules/{schedule_id}: Удалить расписание
+
+Пользователи (Users):
+   - GET /users: Получить список всех пользователей
+   - POST /users: Создать нового пользователя
+   - PUT /users/{user_id}: Обновить данные пользователя
+   - DELETE /users/{user_id}: Удалить пользователя
 
 ### Примеры данных
 Создание аудитории:
