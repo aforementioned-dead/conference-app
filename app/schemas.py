@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from datetime import datetime
 from typing import Optional
 
@@ -14,8 +14,7 @@ class RoomCreate(RoomBase):
 class Room(RoomBase):
     id: int
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class PresentationBase(BaseModel):
@@ -31,8 +30,7 @@ class PresentationCreate(PresentationBase):
 class Presentation(PresentationBase):
     id: int
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class ScheduleBase(BaseModel):
@@ -49,8 +47,7 @@ class ScheduleCreate(ScheduleBase):
 class Schedule(ScheduleBase):
     id: int
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class UserBase(BaseModel):
@@ -65,6 +62,4 @@ class User(UserBase):
     id: int
     role: str
 
-
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)

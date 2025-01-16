@@ -56,3 +56,29 @@ def test_time_slot_overlap(client):
     })
     assert response.status_code == 400
     assert response.json()["detail"] == "Это время уже занято другой презентацией. Пожалуйста, выберите другое время!"
+
+
+def test_update_room(client, test_db):
+    response_create = client.post("/rooms", json={"name": "Тестовая комната"})
+    assert response_create.status_code == 200
+    created_room = response_create.json()
+
+    updated_data = {"name": "Обновленная тестовая комната"}
+    response_update = client.put(f"/rooms/{created_room['id']}", json=updated_data)
+    assert response_update.status_code == 200
+    updated_room = response_update.json()
+
+    assert updated_room["id"] == created_room["id"]
+    assert updated_room["name"] == updated_data["name"]
+
+
+def test_delete_room(client, test_db):
+    response_create = client.post("/rooms", json={"name": "Обновленная тестовая комната"})
+    assert response_create.status_code == 200
+    created_room = response_create.json()
+
+    response_delete = client.delete(f"/rooms/{created_room['id']}")
+    assert response_delete.status_code == 200
+
+    response_get = client.get(f"/rooms/{created_room['id']}")
+    assert response_get.status_code == 404

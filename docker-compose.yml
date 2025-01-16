@@ -4,8 +4,8 @@ services:
     container_name: conference_app
     ports:
       - "8000:8000"
-    environment:
-      - DATABASE_URL=postgresql+psycopg2://user:password@db:5432/conference_db
+    env_file:
+      - .env.docker
     depends_on:
       - db
 
