@@ -62,12 +62,8 @@
 1. Соберите и запустите контейнер Docker:
    ```
    docker-compose up --build
-
-2. Перейдите в conference_app:
-   ```
-   docker exec -it conference_app bash
    
-3. Доступ к приложению http://localhost:8000/docs
+2. Доступ к приложению http://localhost:8000/docs
 
 ### Тестирование
 1. Запустите все тесты:
@@ -75,6 +71,15 @@
    poetry run pytest
 
 2. Убедитесь, что все тесты проходят успешно
+
+### Тестирование внутри Docker
+1. Перейдите в conference_app:
+   ``` 
+   docker exec -it conference_app bash
+
+2. Запустите команду
+   ```
+   poetry run pytest
 
 ### API Эндпоинты
 Аудитории (Rooms):
