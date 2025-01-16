@@ -2,11 +2,14 @@ from pydantic import BaseModel
 from datetime import datetime
 from typing import Optional
 
+
 class RoomBase(BaseModel):
     name: str
 
+
 class RoomCreate(RoomBase):
     pass
+
 
 class Room(RoomBase):
     id: int
@@ -20,8 +23,10 @@ class PresentationBase(BaseModel):
     description: Optional[str] = None
     presenter: str
 
+
 class PresentationCreate(PresentationBase):
     pass
+
 
 class Presentation(PresentationBase):
     id: int
@@ -36,8 +41,10 @@ class ScheduleBase(BaseModel):
     start_time: datetime
     end_time: datetime
 
+
 class ScheduleCreate(ScheduleBase):
     pass
+
 
 class Schedule(ScheduleBase):
     id: int
@@ -57,6 +64,7 @@ class UserCreate(UserBase):
 class User(UserBase):
     id: int
     role: str
+
 
     class Config:
         from_attributes = True

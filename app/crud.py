@@ -5,6 +5,7 @@ from sqlalchemy import and_
 from datetime import datetime
 from fastapi import HTTPException
 
+
 def get_rooms(db: Session):
     return db.query(models.Room).all()
 
@@ -70,6 +71,7 @@ def create_user(db: Session, user: schemas.UserCreate):
     db.commit()
     db.refresh(db_user)
     return db_user
+
 
 def create_schedule(db: Session, schedule: schemas.ScheduleCreate):
     overlapping = db.query(models.Schedule).filter(

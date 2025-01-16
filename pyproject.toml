@@ -7,11 +7,11 @@ authors = [
 ]
 license = {text = "MIT"}
 readme = "README.md"
-requires-python = "^3.10"
+requires-python = "^3.11"
 dependencies = [
     "fastapi (>=0.115.6,<0.116.0)",
     "sqlalchemy (>=2.0.37,<3.0.0)",
-    "psycopg2 (>=2.9.10,<3.0.0)",
+    "psycopg2-binary (>=2.9.10,<3.0.0)",
     "pydantic (>=2.10.5,<3.0.0)",
     "alembic (>=1.14.0,<2.0.0)",
     "uvicorn (>=0.34.0,<0.35.0)",
@@ -19,6 +19,14 @@ dependencies = [
 ]
 
 [tool.poetry]
+name = "test-task3"
+version = "0.1.0"
+description = "A test task project"
+authors = ["georg7100@gmail.com"]
+
+packages = [
+    { include = "app" }
+]
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.4"
