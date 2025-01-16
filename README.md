@@ -34,20 +34,24 @@
    cd conference-app
 
 2. Создайте и активируйте виртуальное окружение:
-   - python -m venv venv
-   - source venv/bin/activate  # Для Windows: venv\Scripts\activate
+   ```
+   python -m venv venv
+   source venv/bin/activate  # Для Windows: venv\Scripts\activate
 
-3. Установите зависимости:
-   - poetry install
+4. Установите зависимости:
+   ```
+   poetry install
 
-4. Настройте базу данных:
+5. Настройте базу данных:
    Создайте базу данных PostgreSQL и обновите переменную DATABASE_URL в файле .env   
    Примените миграции:
-   - alembic upgrade head
+   ```
+   alembic upgrade head
 
 ### Запуск приложения
 1. Запустите сервер:
-   - uvicorn main:app --reload
+   ```
+   uvicorn main:app --reload
 
 2. Откройте Swagger UI:
    - Перейдите по адрему http://127.0.0.1:8000/docs
@@ -56,13 +60,15 @@
 
 ### Запуск с использованием Docker
 1. Соберите и запустите контейнер Docker:
-   - docker-compose up --build
+   ```
+   docker-compose up --build
    
 2. Доступ к приложению http://localhost:8000/docs
 
 ### Тестирование
 1. Запустите все тесты:
-   - pytest
+   ```
+   pytest
 
 2. Убедитесь, что все тесты проходят успешно
 
