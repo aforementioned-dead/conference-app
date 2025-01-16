@@ -38,15 +38,9 @@
    python -m venv venv
    source venv/bin/activate  # Для Windows: venv\Scripts\activate
 
-4. Установите зависимости:
+3. Установите зависимости:
    ```
    poetry install
-
-5. Настройте базу данных:
-   Создайте базу данных PostgreSQL и обновите переменную DATABASE_URL в файле .env   
-   Примените миграции:
-   ```
-   alembic upgrade head
 
 ### Запуск приложения
 1. Запустите сервер:
