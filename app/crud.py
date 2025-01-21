@@ -220,3 +220,10 @@ def delete_user(db: Session, user_id: int):
     db.delete(db_user)
     db.commit()
     return {"detail": "Пользователь успешно удален"}
+
+
+def get_user_by_id(db: Session, user_id: int):
+    user = db.query(models.User).filter(models.User.id == user_id).first()
+    if not user:
+        raise HTTPException(status_code=404, detail='Пользователь не найден')
+    return user

@@ -63,3 +63,7 @@ class User(UserBase):
     role: str
 
     model_config = ConfigDict(from_attributes=True)
+
+
+class UserRegister(BaseModel):
+    username: str
