@@ -36,4 +36,7 @@ def delete_room(db: Session, room_id: int):
 
 
 def get_room(db: Session, room_id: int):
+    db_room = db.query(models.Room).filter(models.Room.id == room_id).first()
+    if not db_room:
+        raise HTTPException(status_code=404)
     return db.query(Room).filter(Room.id == room_id).first()

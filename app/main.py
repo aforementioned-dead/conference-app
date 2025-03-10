@@ -150,11 +150,3 @@ def delete_user(user_id: int, db: Session = Depends(get_db)):
 @app.get("/users", tags=["Пользователи"])
 def get_users(db: Session = Depends(get_db)):
     return users_crud.get_users(db)
-
-
-@app.post("/register", response_model=schemas.User, tags=["Пользователи"])
-def register_user(
-    user: schemas.UserBase,
-    db: Session = Depends(get_db)
-):
-    return users_crud.register_user(db, user)
