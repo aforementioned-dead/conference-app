@@ -18,6 +18,7 @@ def test_schedule_by_room(client):
     assert "Основная комната" in response.json()
     assert len(response.json()["Основная комната"]) == 1
 
+
 def test_time_slot_overlap(client):
     client.post("/rooms", json={"name": "Основная комната"})
     client.post("/users", json={"username": "Илон Макс", "role": "Докладчик"})
