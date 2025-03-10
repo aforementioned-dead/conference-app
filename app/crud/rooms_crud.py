@@ -4,6 +4,8 @@ from fastapi import HTTPException
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy import and_
 from collections import defaultdict
+from sqlalchemy.orm import Session
+from app.models.base import Room
 
 
 def create_room(db: Session, room: schemas.RoomCreate):
@@ -31,3 +33,7 @@ def delete_room(db: Session, room_id: int):
     db.delete(db_room)
     db.commit()
     return {"detail": "Комната успешно удалена"}
+
+
+def get_room(db: Session, room_id: int):
+    return db.query(Room).filter(Room.id == room_id).first()

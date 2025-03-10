@@ -4,6 +4,9 @@ from fastapi import HTTPException
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy import and_
 from collections import defaultdict
+from sqlalchemy.orm import Session
+from app.models.user import User
+from app.schemas import UserBase
 
 
 def get_users(db: Session):
@@ -51,3 +54,11 @@ def get_user_by_id(db: Session, user_id: int):
     if not user:
         raise HTTPException(status_code=404, detail='Пользователь не найден')
     return user
+
+
+def register_user(db: Session, user: UserBase):
+    new_user = User(**user.dict())
+    db.add(new_user)
+    db.commit()
+    db.refresh(new_user)
+    return new_user

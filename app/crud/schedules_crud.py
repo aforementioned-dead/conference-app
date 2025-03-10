@@ -62,3 +62,17 @@ def delete_schedule(db: Session, schedule_id: int):
     db.delete(db_schedule)
     db.commit()
     return {"detail": "Расписание успешно удалено"}
+
+
+def get_schedule_by_room(db: Session):
+    schedules = db.query(models.Schedule).all()
+    result = defaultdict(list)
+    for schedule in schedules:
+        room = db.query(models.Room).filter(models.Room.id == schedule.room_id).first()
+        presentation = db.query(models.Presentation).filter(models.Presentation.id == schedule.presentation_id).first()
+        result[room.name].append({
+            "presentations": presentation.title,
+            "start_time": schedule.start_time,
+            "end_time": schedule.end_time
+        })
+    return result
