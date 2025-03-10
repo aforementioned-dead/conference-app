@@ -8,13 +8,6 @@ from sqlalchemy.exc import IntegrityError
 from fastapi import Depends
 
 
-# def get_room(room_id: int, db: Session):
-#     room = db.query(models.Room).filter(models.Room.id == room_id).first()
-#     if not room:
-#         raise HTTPException(status_code=404, detail="Комната не найдена")
-#     return room
-
-
 def get_users(db: Session):
     return db.query(models.User).all()
 
@@ -45,19 +38,6 @@ def create_presentation(db: Session, presentation: schemas.PresentationCreate):
 
 def get_schedules(db: Session):
     return db.query(models.Schedule).all()
-
-
-# def create_schedule(db: Session, schedule: schemas.ScheduleCreate):
-#     db_schedule = models.Schedule(
-#         room_id=schedule.room_id, 
-#         presentation_id=schedule.presentation_id,
-#         start_time=schedule.start_time,
-#         end_time=schedule.end_time
-#     )
-#     db.add(db_schedule)
-#     db.commit()
-#     db.refresh(db_schedule)
-#     return db_schedule
 
 
 def get_schedule_by_room(db: Session):
